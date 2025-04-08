@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}La Centrale{% endblock %}</title>
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <h1>La Centrale</h1>
+                <div class="header-actions">
+                    <div class="account-menu">
+                        <span class="account-icon" onclick="toggleAccountMenu()">👤</span>
+                        <div id="account-dropdown" class="dropdown hidden">
+                            <a href="#" class="dropdown-item">Se connecter</a>
+                            <a href="#" class="dropdown-item">Se déconnecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            {% block body %}{% endblock %}
+        </main>
+
+        <aside class="recent-activities">
+            <h2>Dernières Activités</h2>
+            <ul>
+                <li>Déploiement du projet 1 réussi</li>
+                <li>Modification du fichier de configuration</li>
+                <li>Nouvelle fonctionnalité ajoutée</li>
+            </ul>
+        </aside>
+
+        <footer>
+            <p>&copy; {{ "now"|date("Y") }} Mon Projet Symfony</p>
+        </footer>
+
+        <script>
+            function toggleAccountMenu() {
+                const dropdown = document.getElementById('account-dropdown');
+                dropdown.classList.toggle('hidden');
+            }
+        </script>
+    </body>
+</html>

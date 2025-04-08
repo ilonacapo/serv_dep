@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Projets{% endblock %}
+
+{% block body %}
+    <h2>Liste des projets :</h2>
+    {% if projects|default([]) is not empty %}
+        <ul>
+            {% for project in projects %}
+                <li>{{ project.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun projet disponible.</p>
+    {% endif %}
+{% endblock %}

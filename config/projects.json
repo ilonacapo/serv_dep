@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Projet 1",
+        "repository": "https://github.com/user/projet1.git",
+        "deploy_path": "/var/www/projet1",
+        "description": "Description du projet 1"
+    },
+    {
+        "name": "Projet 2",
+        "repository": "https://github.com/user/projet2.git",
+        "deploy_path": "/var/www/projet2",
+        "description": "Description du projet 2"
+    }
+]

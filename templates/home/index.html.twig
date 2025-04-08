@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h2 class="mt-4">Liste des projets :</h2>
+    {% if projects|default([]) is not empty %}
+        <div class="project-list">
+            {% for project in projects %}
+                <div class="project-card">
+                    <h3>{{ project.name }}</h3>
+                    {% if project.description is defined %}
+                        <p>{{ project.description }}</p>
+                    {% endif %}
+                    {% if project.repository is defined %}
+                        <p><a href="{{ project.repository }}" target="_blank" class="btn btn-primary">Voir le Repository</a></p>
+                    {% endif %}
+                    {% if project.deploy_path is defined %}
+                        <p>Deploy Path: {{ project.deploy_path }}</p>
+                    {% endif %}
+                    <div class="project-actions">
+                        <a href="{{ path('project_deploy', { name: project.name }) }}" class="btn btn-success">Déployer</a>
+                        <a href="#" class="btn btn-info">Voir l'historique</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun projet disponible pour le moment.</p>
+    {% endif %}
+{% endblock %}
